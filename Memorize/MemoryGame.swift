@@ -23,6 +23,18 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             cards.append(Card(id: 2 * pairIndex, content: content))
             cards.append(Card(id: 2 * pairIndex + 1, content: content))
         }
+        cards.shuffle()
+    }
+    
+    mutating func shuffle() {
+        cards.shuffle()
+    }
+    
+    mutating func reset() {
+        cards.indices.forEach { index in
+            cards[index].isFaceUp = false
+            cards[index].isMatched = false
+        }
     }
     
     mutating func choose(_ card: Card) {
